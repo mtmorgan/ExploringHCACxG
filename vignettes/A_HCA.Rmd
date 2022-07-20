@@ -86,20 +86,17 @@ Some examples:
 
 ## Workshop
 
-### Exploring the HCA and CellXGene web sites
+### Exploring the Human Cell Atlas Data Portal
 
 Human Cell Atlas data portal
 
 - https://data.humancellatlas.org/explore/projects
 
-CellXGene
-
-- https://cellxgene.cziscience.com/
-- Easy visualization is pretty cool! 
-
 ### Working with HCA data
 
-### Working with CellXGene data
+```{r}
+
+```
 
 ### Importing .loom or .h5ad data into _R_ / _Bioconductor_
 

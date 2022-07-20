@@ -1,7 +1,7 @@
 Package: ExploringHCACxG
 Title: Using R / Bioconductor to explore and download Human Cell Atlas
     and CellXGene data resources
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: 
     c(person(
         given = "Martin",
@@ -33,7 +33,8 @@ Depends:
 Suggests: 
     knitr,
     rmarkdown,
-    pkgdown
+    pkgdown,
+    dplyr, zellkonverter, SingleCellExperiment, ggplot2
 URL: https://mtmorgan.github.io/ExploringHCACxG/
 BugReports: https://github.com/mtmorgan/ExploringHCACxG/issues/new/choose
 VignetteBuilder: knitr

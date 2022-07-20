@@ -87,24 +87,107 @@ Some examples:
 
 ## Workshop
 
-### Exploring the HCA and CellXGene web sites
+### Exploring the CellXGene web sites
 
-Human Cell Atlas data portal
-
-- https://data.humancellatlas.org/explore/projects
-
-CellXGene
+Datasets
 
 - https://cellxgene.cziscience.com/
+
+Interactive visualization
+
 - Easy visualization is pretty cool! 
 
-### Working with HCA data
+Some observations
+
+- Why is visualization fast? Pre-computed dimensionality reduction.
+- What workflow was used in processing data? It's up to the
+  contributor, and not documented.
 
 ### Working with CellXGene data
 
-### Importing .loom or .h5ad data into _R_ / _Bioconductor_
+Load the packages we'll use
+
+```{r}
+suppressPackageStartupMessages({
+    library(cellxgenedp)
+    library(dplyr)
+    library(zellkonverter)
+    library(SingleCellExperiment)
+    library(ggplot2)
+})
+```
+
+Connect to the database
+
+```{r}
+db = db()
+```
+
+Discover datasets with 10x assays of African American females
+
+```{r}
+african_american_female <-
+    datasets(db) |>
+    filter(
+        facets_filter(assay, "ontology_term_id", "EFO:0009922"),
+        facets_filter(ethnicity, "label", "African American"),
+        facets_filter(sex, "label", "female")
+    )
+african_american_female
+```
+
+Find H5AD files for these datasets; visualize and download one for
+illustration
+
+```{r}
+selected_files <-
+    left_join(
+        african_american_female |> select(dataset_id),
+        files(db),
+        by = "dataset_id"
+    )
+selected_files
+```
+
+Visualize 'CXG' files in the CellxGene web browser
+
+```{r, eval = FALSE}
+selected_files |>
+    filter(filetype == "CXG") |>
+    dplyr::slice(1) |>
+    datasets_visualize()
+```
+
+Download 'H5AD' (anndata) files for local use
+
+```{r}
+h5ad_file <-
+    selected_files |>
+    filter(filetype == "H5AD") |>
+    dplyr::slice(1) |>
+    files_download(dry.run = FALSE)
+```
+
+### Importing .h5ad data into _R_ / _Bioconductor_
+
+Read the H5AD file into _R_
+
+```{r}
+h5ad <- readH5AD(h5ad_file, reader = "R", use_hdf5 = TRUE)
+h5ad
+```
 
 ### Integration with _R_ / _Bioconductor_ work flows
+
+Work with the data, e.g., simple visualization to illustrate the
+familiar _R_ / _Bioconductor_ tools 'just work'.
+
+```{r}
+umap = as_tibble(reducedDim(h5ad, "X_umap"))
+ggplot(umap) +
+    aes(x = V1, y = V2, color = h5ad$cell_type) +
+    geom_point(pch = ".")
+```
 
 ## Acknowledgements
 
