@@ -1,12 +1,12 @@
 ---
-title: "Accessing Human Cell Atlas Data From R / Bioconductor"
+title: "1. Accessing Human Cell Atlas Data From Bioconductor"
 author:
     Martin Morgan^[Roswell Park Comprehensive Cancer Center (RPCCC)],
-    Kayla Interdonato^[RPCCC],
+    Maya McDaniel,
     Yubo Cheng^[RPCCC].
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Accessing Human Cell Atlas Data From R / Bioconductor...}
+  %\VignetteIndexEntry{1. Accessing Human Cell Atlas Data From Bioconductor}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -34,11 +34,11 @@ notes that can be read and understood outside of the workshop.
 
 ### _R_ / _Bioconductor_ packages used
 
-The focus is on the [hca][] and [cellxgenedp][] packages. These packages
-emphasize [dplyr][] and 'tidy' approaches to working with
-data.frames. Files downloaded from the HCA or CellXGene web sites can
-be imported into R / Bioconductor as [SingleCellExperiment][] objects
-through the [LoomExperiment][] and [zellkonverter][] packages.
+The focus is on the [hca][] package. This package emphasize [dplyr][]
+and 'tidy' approaches to working with data.frames. Files downloaded
+from the HCA or CellXGene web sites can be imported into R /
+Bioconductor as [SingleCellExperiment][] objects through the
+[LoomExperiment][] and [zellkonverter][] packages.
 
 [hca]: https://bioconductor.org/packages/hca
 [cellxgenedp]: https://bioconductor.org/packages/cellxgenedp
@@ -49,13 +49,10 @@ through the [LoomExperiment][] and [zellkonverter][] packages.
 
 ### Time outline
 
-| Activity                                               | Time |
-|--------------------------------------------------------|------|
-| Introduction to the HCA and CellXGene web sites        |  5m  |
-| HCA and CellXGene data discovery in R / Bioconductor   | 15m  |
-| Integration with R / Bioconductor single-cell analysis | 10m  |
-| Working on the AnVIL cloud                             | 10m  |
-| Discussion                                             |  5m  |
+| Activity                            | Time |
+|-------------------------------------|------|
+| Introduction to the HCA data portal |  5m  |
+| HCA discovery in R / Bioconductor   | 10m  |
 
 ### Workshop goals and objectives
 

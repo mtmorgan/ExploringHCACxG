@@ -32,6 +32,14 @@ work through detailed steps after the workshop, and explore avenues
 suggested by the material and relevant to their own research at their
 leisure.
 
+### Time outline
+
+| Activity                                          | Time |
+|---------------------------------------------------|------|
+| Accessing Human Cell Atlas data from Bioconductor | 15m  |
+| Accessing CellxGene data from  Bioconductor       | 15m  |
+| Bioconductor, AnVIL, and the HCA                  | 15m  |
+
 [hca]: https://bioconductor.org/packages/hca
 [cellxgenedp]: https://bioconductor.org/packages/cellxgenedp
 [dplyr]: https://cran.r-project.org/package=dplyr

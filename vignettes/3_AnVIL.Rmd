@@ -1,12 +1,12 @@
 ---
-title: "Accessing Human Cell Atlas Data on the AnVIL Cloud"
+title: "3. Accessing Human Cell Atlas Data on the AnVIL Cloud"
 author: 
     Martin Morgan^[Roswell Park Comprehensive Cancer Center (RPCCC)],
     Kayla Interdonato^[RPCCC],
     Yubo Cheng^[RPCCC].
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Accessing Human Cell Atlas Data on the AnVIL Cloud}
+  %\VignetteIndexEntry{3. Accessing Human Cell Atlas Data on the AnVIL Cloud}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -33,15 +33,9 @@ notes that can be read and understood outside of the workshop.
 
 ### _R_ / _Bioconductor_ packages used
 
-The focus is on the [hca][] and [cellxgenedp][] packages. These packages
-emphasize [dplyr][] and 'tidy' approaches to working with
-data.frames. Files downloaded from the HCA or CellXGene web sites can
-be imported into R / Bioconductor as [SingleCellExperiment][] objects
-through the [LoomExperiment][] and [zellkonverter][] packages.
-
-A particular focus of this vignette is use of data in the [AnVIL
-computational cloud][]. The [AnVIL][] package provides many functions
-that facilitate efficient use of this resource.
+The focus of this vignette is use of data in the [AnVIL computational
+cloud][]. The [AnVIL][] package provides many functions that
+facilitate efficient use of this resource.
 
 [hca]: https://bioconductor.org/packages/hca
 [cellxgenedp]: https://bioconductor.org/packages/cellxgenedp
@@ -55,13 +49,11 @@ that facilitate efficient use of this resource.
 
 ### Time outline
 
-| Activity                                               | Time |
-|--------------------------------------------------------|------|
-| Introduction to the HCA and CellXGene web sites        |  5m  |
-| HCA and CellXGene data discovery in R / Bioconductor   | 15m  |
-| Integration with R / Bioconductor single-cell analysis | 10m  |
-| Working on the AnVIL cloud                             | 10m  |
-| Discussion                                             |  5m  |
+| Activity                                        | Time |
+|-------------------------------------------------|------|
+| Introduction to the AnVIL project               |  5m  |
+| AnVIL and Bioconductor -- the [AnVIL][] package |  5m  |
+| AnVIL and the HCA                               |  5m  |
 
 ### Workshop goals and objectives
 
