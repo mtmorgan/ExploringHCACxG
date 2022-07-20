@@ -6,7 +6,7 @@ author:
     Yubo Cheng^[RPCCC].
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{2. Accessing CellxGene Data from Bioconductor}
+  %\VignetteIndexEntry{2. Accessing CellxGene Data From Bioconductor}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
