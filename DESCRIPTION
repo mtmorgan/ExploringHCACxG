@@ -1,6 +1,6 @@
 Package: ExploringHCACxG
 Title: Using R / Bioconductor to explore and download Human Cell Atlas
-    and CellXGene data resources.
+    and CellXGene data resources
 Version: 0.0.1
 Authors@R: 
     c(person(
