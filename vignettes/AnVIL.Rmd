@@ -1,0 +1,172 @@
+---
+title: "Accessing Human Cell Atlas Data on the AnVIL Cloud"
+author: 
+    Martin Morgan^[Roswell Park Comprehensive Cancer Center (RPCCC)],
+    Kayla Interdonato^[RPCCC],
+    Yubo Cheng^[RPCCC].
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Accessing Human Cell Atlas Data on the AnVIL Cloud}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Last modified: 7 July, 2022
+
+## Overview
+
+### Description
+
+FIXME: Along with the topic of your workshop, include how students can expect
+to spend their time. For the description may also include information
+about what type of workshop it is (e.g. instructor-led live demo, lab,
+lecture + lab, etc.). Instructors are strongly recommended to provide
+completely worked examples for lab sessions, and a set of stand-alone
+notes that can be read and understood outside of the workshop.
+
+### _R_ / _Bioconductor_ packages used
+
+The focus is on the [hca][] and [cellxgenedp][] packages. These packages
+emphasize [dplyr][] and 'tidy' approaches to working with
+data.frames. Files downloaded from the HCA or CellXGene web sites can
+be imported into R / Bioconductor as [SingleCellExperiment][] objects
+through the [LoomExperiment][] and [zellkonverter][] packages.
+
+A particular focus of this vignette is use of data in the [AnVIL
+computational cloud][]. The [AnVIL][] package provides many functions
+that facilitate efficient use of this resource.
+
+[hca]: https://bioconductor.org/packages/hca
+[cellxgenedp]: https://bioconductor.org/packages/cellxgenedp
+[dplyr]: https://cran.r-project.org/package=dplyr
+[SingleCellExperiment]: https://bioconductor.org/packages/SingleCellExperiment
+[LoomExperiment]: https://bioconductor.org/packages/LoomExperiment
+[zellkonverter]: https://bioconductor.org/packages/zellkonverter
+
+[AnVIL computational cloud]: https://anvilproject.org
+[AnVIL]: https://bioconductor.org/packages/AnVIL
+
+### Time outline
+
+| Activity                                               | Time |
+|--------------------------------------------------------|------|
+| Introduction to the HCA and CellXGene web sites        |  5m  |
+| HCA and CellXGene data discovery in R / Bioconductor   | 15m  |
+| Integration with R / Bioconductor single-cell analysis | 10m  |
+| Working on the AnVIL cloud                             | 10m  |
+| Discussion                                             |  5m  |
+
+### Workshop goals and objectives
+
+List "big picture" student-centered workshop goals and learning
+objectives. Learning goals and objectives are related, but not the
+same thing. These goals and objectives will help some people to decide
+whether to attend the conference for training purposes, so please make
+these as precise and accurate as possible.
+
+*Learning goals* are high-level descriptions of what
+participants will learn and be able to do after the workshop is
+over. *Learning objectives*, on the other hand, describe in very
+specific and measurable terms specific skills or knowledge
+attained. The [Bloom's Taxonomy](#bloom) may be a useful framework
+for defining and describing your goals and objectives, although there
+are others.
+
+### Learning goals
+
+Some examples:
+
+* describe how to...
+* identify methods for...
+* understand the difference between...
+
+### Learning objectives
+
+* analyze xyz data to produce...
+* create xyz plots
+* evaluate xyz data for artifacts
+
+## Workshop
+
+### Recap: HCA and CellXGene data
+
+HCA and CellXGene data portals
+
+- https://data.humancellatlas.org/explore/projects
+- https://cellxgene.cziscience.com/
+
+### Workflows for data reduction -- from fastq to loom
+
+Overall workflow
+
+- Researchers design experiments and submit samples to genomics core
+  facilities
+- Core facilities sequence samples and generate 'fastq' files
+- Fastq files are transformed to count matrices summarizing expression
+  of genes in individual cells
+- (Perhaps) Core facility performs initial analysis of count matrices
+- (Probably) Researcher wishes they could do different variations of
+  the analysis performed by the core facility, especially 'after'
+  obtaining the summary count matrix.
+  
+What about that fastq-to-count-matrix step?
+
+- Many possible routes through this step
+- Can be formalized, e.g., as 'Workflow Desccription Language' (WDL)
+  workflows
+- Example: The HCA Optimus Workflow
+- The AnVIL cloud allows this step to be performed repoducibly
+  (reproducibility is not so important as knowing the provenance of
+  the workflow that a formal description provides) and applied to new
+  data sets.
+
+HCA workflows in AnVIL
+  
+The count matrix (loom file) is just the first step...
+
+- Many interesting biological questions remain
+- These are not really the domain of the core facility focusing on
+  common steps in the analysis of scRNASeq data, but of the individual
+  researcher trying to understand specific biological questions
+
+### Importing loom files into AnVIL _R_ / _Bioconductor_
+
+A standard RStudio environment
+
+- Running on an easily configured container
+- E.g., Easy to reconfigure for more memory or disk space
+
+Workflow results deposited in 'buckets'
+
+- Localize to the local persistent 'disk'
+- Access on the disk as usual, e.g., `LoomExperiment::import()`
+
+### Further analysis and visualization withing _R_ / _Bioconductor_
+
+Introducing OSCA
+
+Installing packages
+
+- Really fast and easy on the AnVIL cloud!
+- Container has been pre-configured so system dependencies are satisfied
+- Packages are installed as 'binaries', so no compiling from source
+- Transfer between the binary repository and the RStudio runtime is
+  'in the cloud', so very fast
+
+'Interactive' work flows
+
+### Next steps / open challenges (advanced)
+
+## Acknowledgements
+
+```{r}
+sessionInfo()
+```
+

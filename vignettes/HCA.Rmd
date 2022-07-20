@@ -1,0 +1,116 @@
+---
+title: "Accessing Human Cell Atlas Data From R / Bioconductor"
+author:
+    Martin Morgan^[Roswell Park Comprehensive Cancer Center (RPCCC)],
+    Kayla Interdonato^[RPCCC],
+    Yubo Cheng^[RPCCC].
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Accessing Human Cell Atlas Data From R / Bioconductor...}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Last modified: 20 July, 2022
+
+## Overview
+
+### Description
+
+FIXME: Along with the topic of your workshop, include how students can expect
+to spend their time. For the description may also include information
+about what type of workshop it is (e.g. instructor-led live demo, lab,
+lecture + lab, etc.). Instructors are strongly recommended to provide
+completely worked examples for lab sessions, and a set of stand-alone
+notes that can be read and understood outside of the workshop.
+
+### _R_ / _Bioconductor_ packages used
+
+The focus is on the [hca][] and [cellxgenedp][] packages. These packages
+emphasize [dplyr][] and 'tidy' approaches to working with
+data.frames. Files downloaded from the HCA or CellXGene web sites can
+be imported into R / Bioconductor as [SingleCellExperiment][] objects
+through the [LoomExperiment][] and [zellkonverter][] packages.
+
+[hca]: https://bioconductor.org/packages/hca
+[cellxgenedp]: https://bioconductor.org/packages/cellxgenedp
+[dplyr]: https://cran.r-project.org/package=dplyr
+[SingleCellExperiment]: https://bioconductor.org/packages/SingleCellExperiment
+[LoomExperiment]: https://bioconductor.org/packages/LoomExperiment
+[zellkonverter]: https://bioconductor.org/packages/zellkonverter
+
+### Time outline
+
+| Activity                                               | Time |
+|--------------------------------------------------------|------|
+| Introduction to the HCA and CellXGene web sites        |  5m  |
+| HCA and CellXGene data discovery in R / Bioconductor   | 15m  |
+| Integration with R / Bioconductor single-cell analysis | 10m  |
+| Working on the AnVIL cloud                             | 10m  |
+| Discussion                                             |  5m  |
+
+### Workshop goals and objectives
+
+List "big picture" student-centered workshop goals and learning
+objectives. Learning goals and objectives are related, but not the
+same thing. These goals and objectives will help some people to decide
+whether to attend the conference for training purposes, so please make
+these as precise and accurate as possible.
+
+*Learning goals* are high-level descriptions of what
+participants will learn and be able to do after the workshop is
+over. *Learning objectives*, on the other hand, describe in very
+specific and measurable terms specific skills or knowledge
+attained. The [Bloom's Taxonomy](#bloom) may be a useful framework
+for defining and describing your goals and objectives, although there
+are others.
+
+### Learning goals
+
+Some examples:
+
+* describe how to...
+* identify methods for...
+* understand the difference between...
+
+### Learning objectives
+
+* analyze xyz data to produce...
+* create xyz plots
+* evaluate xyz data for artifacts
+
+## Workshop
+
+### Exploring the HCA and CellXGene web sites
+
+Human Cell Atlas data portal
+
+- https://data.humancellatlas.org/explore/projects
+
+CellXGene
+
+- https://cellxgene.cziscience.com/
+- Easy visualization is pretty cool! 
+
+### Working with HCA data
+
+### Working with CellXGene data
+
+### Importing .loom or .h5ad data into _R_ / _Bioconductor_
+
+### Integration with _R_ / _Bioconductor_ work flows
+
+## Acknowledgements
+
+```{r}
+sessionInfo()
+```
+

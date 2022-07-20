@@ -1,28 +1,40 @@
-Package: BuildABiocWorkshop
-Title: Bioconductor or R Workshop Template and Github Actions
-Version: 2.0.0
+Package: ExploringHCACxG
+Title: Using R / Bioconductor to explore and download Human Cell Atlas
+    and CellXGene data resources.
+Version: 0.0.1
 Authors@R: 
-    person(given = "Sean",
-           family = "Davis",
-           role = c("aut", "cre"),
-           email = "seandavi@gmail.com",
-           comment = c(ORCID = "0000-0002-8991-6458"))
-Description: This package serves as a template for using github actions to 
-    prepare a Bioconductor Workshop package for use. In particular,
-    a pkgdown website and docker image are generated based on workflow 
-    settings. 
+    c(person(
+        given = "Martin",
+        family = "Morgan",
+        role = c("aut", "cre"),
+        email = "martin.morgan@roswellpark.org",
+        comment = c(ORCID = "0000-0002-5874-8148")
+      ),
+      person("Maya", "McDaniel", role = "aut"),
+      person("Kayla", "Interdonato", role = "aut"),
+      person("Yubo", "Cheng", role = "aut")
+    )
+Description: Human Cell Atlas data sets can be discovered, previewed,
+    and downloaded using the HCA data portal
+    (https://data.humancellatlas.org/explore/projects) and cellxgene
+    (https://cellxgene.cziscience.com/) web sites. The hca and
+    cellxgenedp R / Bioconductor packages provide a more flexible and
+    reproducible approach to using this data. In particular the
+    packages allow direct integration of HCA data sets into the 'OSCA'
+    (https://bioconductor.org/books/release/OSCA/) single-cell
+    analysis workflows in R / Bioconductor.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Depends: 
-    Biobase
+    hca, cellxgenedp
 Suggests: 
     knitr,
     rmarkdown,
     pkgdown
-URL: https://seandavi.github.io/BuildABiocWorkshop/
-BugReports: https://github.com/seandavi/BuildABiocWorkshop/issues/new/choose
+URL: https://mtmorgan.github.io/ExploringHCACxG/
+BugReports: https://github.com/mtmorgan/ExploringHCACxG/issues/new/choose
 VignetteBuilder: knitr
-DockerImage: ghcr.io/seandavi/buildabiocworkshop:latest
+DockerImage: ghcr.io/mtmorgan/exploringhcacxg:latest
