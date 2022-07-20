@@ -2,10 +2,10 @@ pandoc: 2.17.1.1
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
-  AnVIL: AnVIL.html
-  CXG: CXG.html
-  HCA: HCA.html
-last_built: 2022-07-20T20:30Z
+  A_HCA: A_HCA.html
+  B_CXG: B_CXG.html
+  C_AnVIL: C_AnVIL.html
+last_built: 2022-07-20T21:29Z
 urls:
   reference: https://github.com/mtmorgan/ExploringHCACxG/reference
   article: https://github.com/mtmorgan/ExploringHCACxG/articles
