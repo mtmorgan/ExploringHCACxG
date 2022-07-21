@@ -158,7 +158,7 @@ Load required packages
 suppressPackageStartupMessages({
     library(hca)
     library(LoomExperiment)
-    library(SummarizedExperiment)
+    library(SingleCellExperiment)
 })
 ```
 

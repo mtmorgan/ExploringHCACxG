@@ -34,7 +34,8 @@ Suggests:
     knitr,
     rmarkdown,
     pkgdown,
-    dplyr, HDF5Array, zellkonverter, SingleCellExperiment, ggplot2
+    dplyr, LoomExperiment, SingleCellExperiment,
+    HDF5Array, zellkonverter, ggplot2
 URL: https://mtmorgan.github.io/ExploringHCACxG/
 BugReports: https://github.com/mtmorgan/ExploringHCACxG/issues/new/choose
 VignetteBuilder: knitr
