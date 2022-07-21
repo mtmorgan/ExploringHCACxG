@@ -35,7 +35,8 @@ Suggests:
     rmarkdown,
     pkgdown,
     dplyr, LoomExperiment, SingleCellExperiment,
-    HDF5Array, zellkonverter, ggplot2
+    HDF5Array, zellkonverter, ggplot2,
+    futile.logger
 URL: https://mtmorgan.github.io/ExploringHCACxG/
 BugReports: https://github.com/mtmorgan/ExploringHCACxG/issues/new/choose
 VignetteBuilder: knitr
