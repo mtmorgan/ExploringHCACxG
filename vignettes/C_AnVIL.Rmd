@@ -1,9 +1,9 @@
 ---
 title: "3. Accessing Human Cell Atlas Data on the AnVIL Cloud"
-author: 
+author:
     Martin Morgan^[Roswell Park Comprehensive Cancer Center (RPCCC)],
-    Kayla Interdonato^[RPCCC],
-    Yubo Cheng^[RPCCC].
+    Kayla Interdonato^[Roswell Park Comprehensive Cancer Center (RPCCC)],
+    Yubo Cheng^[Roswell Park Comprehensive Cancer Center (RPCCC)].
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{3. Accessing Human Cell Atlas Data on the AnVIL Cloud}
@@ -14,11 +14,10 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  cache = identical(Sys.info()[["nodename"]], "GVLY610WKT")
 )
 ```
-
-Last modified: 7 July, 2022
 
 ## Overview
 
@@ -52,8 +51,8 @@ facilitate efficient use of this resource.
 | Activity                                        | Time |
 |-------------------------------------------------|------|
 | Introduction to the AnVIL project               |  5m  |
-| AnVIL and Bioconductor -- the [AnVIL][] package |  5m  |
 | AnVIL and the HCA                               |  5m  |
+| AnVIL and Bioconductor -- the [AnVIL][] package |  5m  |
 
 ### Workshop goals and objectives
 
@@ -89,10 +88,14 @@ Some examples:
 
 ### Recap: HCA and CellXGene data
 
-HCA and CellXGene data portals
+[HCA][HCADP] and [CellXGene][CXGDP] data portals
 
-- https://data.humancellatlas.org/explore/projects
-- https://cellxgene.cziscience.com/
+[HCADP]: https://data.humancellatlas.org/explore/projects
+[CXGDP]: https://cellxgene.cziscience.com/
+
+HCA to AnVIL
+
+![](images/HCAAnVIL.png)
 
 ### Workflows for data reduction -- from fastq to loom
 
@@ -107,20 +110,27 @@ Overall workflow
 - (Probably) Researcher wishes they could do different variations of
   the analysis performed by the core facility, especially 'after'
   obtaining the summary count matrix.
-  
+
 What about that fastq-to-count-matrix step?
 
 - Many possible routes through this step
 - Can be formalized, e.g., as 'Workflow Desccription Language' (WDL)
   workflows
-- Example: The HCA Optimus Workflow
+- Example: The [HCA Optimus Workflow][HCAOptimus] and [detailed
+  documentation][WARPOptimus]
+
+    ![](images/OptimusWorkflow.png)
+
 - The AnVIL cloud allows this step to be performed repoducibly
   (reproducibility is not so important as knowing the provenance of
   the workflow that a formal description provides) and applied to new
   data sets.
 
+[HCAOptimus]: https://data.humancellatlas.org/pipelines/optimus-workflow
+[WARPOptimus]: https://broadinstitute.github.io/warp/docs/Pipelines/Optimus_Pipeline/README/
+
 HCA workflows in AnVIL
-  
+
 The count matrix (loom file) is just the first step...
 
 - Many interesting biological questions remain
@@ -161,4 +171,3 @@ Installing packages
 ```{r}
 sessionInfo()
 ```
-

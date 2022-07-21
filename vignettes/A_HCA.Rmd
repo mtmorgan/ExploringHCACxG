@@ -1,12 +1,12 @@
 ---
-title: "1. Accessing Human Cell Atlas Data From Bioconductor"
+title: "1. Accessing Human Cell Atlas Data"
 author:
     Martin Morgan^[Roswell Park Comprehensive Cancer Center (RPCCC)],
     Maya McDaniel,
-    Yubo Cheng^[RPCCC].
+    Yubo Cheng^[Roswell Park Comprehensive Cancer Center (RPCCC)].
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{1. Accessing Human Cell Atlas Data From Bioconductor}
+  %\VignetteIndexEntry{1. Accessing Human Cell Atlas Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,11 +15,10 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  cache = identical(Sys.info()[["nodename"]], "GVLY610WKT")
 )
 ```
-
-Last modified: 20 July, 2022
 
 ## Overview
 
@@ -86,25 +85,234 @@ Some examples:
 
 ## Workshop
 
+### Single-cell analysis in _Bioconductor_
+
+Extensive support for single-cell analysis in _Bioconductor_
+
+- E.g., 213 packages tagged 'SingleCell' in the release branch
+
+    ![](images/BiocSingleCell.png)
+
+- Quality control, normalization, variance modeling, data integration
+  / batch correction, dimensionality reduction, clustering,
+  differential expression, cell type classification, etc
+- Infrastructure to support large out-of-memory data, etc.
+- Typically, processing after a 'count matrix' has been obtained
+
+Orchestrating Single-Cell Analysis with _Bioconductor_ ([OSCA][]) --
+an amazing resource!
+
+![](images/OSCA.png)
+
+[OSCA]: https://bioconductor.org/books/OSCA/
+
+### A quick [dplyr][] 'tidy' refresher
+
+Recall
+
+- A `tibble()` is a `data.frame()` but with a nicer display.
+- A few common commands allow many standard manipulations
+  - `filter()`: filter to include only specific rows
+  - `select()`: select columns
+  - `mutate()`: change or add columns
+  - `glimpes()`: get a quick summary of the first rows of the `tibble`
+  - `left_join(x, y, by =)` is a somehat more advanced function,
+    merging all rows of tibble `x` with rows in `y` that match for
+    columns specified by `by=`.
+- _R_ introduced the 'pipe' `|>`, typically used to take the output of
+  one command and 'pipe' it to the first input argument of the next
+  command
+
+```{r mtcars}
+suppressPackageStartupMessages({
+    library(dplyr)
+})
+
+tbl <- as_tibble(mtcars, rownames = "car")
+tbl
+tbl |>
+    filter(cyl == 6) |>
+    select(car, mpg, disp, hp) |>
+    mutate(`L/100km` = 235.2 / mpg) # Liters per 100 km
+```
+
 ### Exploring the Human Cell Atlas Data Portal
 
-Human Cell Atlas data portal
+Human Cell Atlas [data portal][HCA-data-portal]
 
-- https://data.humancellatlas.org/explore/projects
+![](images/HCADataPortal.png)
+
+[HCA-data-portal]: https://data.humancellatlas.org/explore/projects
 
 ### Working with HCA data
 
-```{r}
+Why use an _R_ script when the Data Portal exists?
 
+- Easily reproducible
+- Flexible exploration of rich & complex data
+- Direct integration with _Bioconductor_ single-cell workflows
+
+Load required packages
+
+```{r}
+suppressPackageStartupMessages({
+    library(hca)
+    library(LoomExperiment)
+    library(SummarizedExperiment)
+})
 ```
 
-### Importing .loom or .h5ad data into _R_ / _Bioconductor_
+Discover projects
+
+```{r discover-projects}
+## basic information, like HCA data portal
+p <- projects()
+p
+
+## much more information
+pe <- projects(as = "tibble_expanded")
+pe
+```
+
+Select subsets of projects using filters, e.g., studying
+liver. Possible to specify several filters at once.
+
+```{r project-filters}
+liver_filter <- filters(
+    specimenOrgan = list(is = "liver")
+)
+liver_projects <- projects(liver_filter)
+liver_projects
+
+liver_projects |>
+    select(projectId, projectTitle)
+
+## facet options available for filtering: facet_options()
+```
+
+Main functions for exploring HCA data
+
+- `projects()`: finding projects of interest.
+- `bundles()`, `samples()`: can be useful when exploring a single
+  project in detail.
+- `files()`: use to download files (e.g., fastq files to start an
+  analysis from scratch; '.loom' files containing gene x cell count
+  matrices produced by standard HCA pipelines).
+- `hca_next()`, `hca_prev()` to 'page' through large datasets.
+
+### Discovering and downloading '.loom' files
+
+HCA standard processing pipelines
+
+Projects with .loom files produced by the standard pipeline satisfy
+the following filter
+
+```{r dcp2-files}
+standard_loom_file_filter <- filters(
+    fileSource = list(is = "DCP/2 Analysis"),
+    fileFormat = list(is = "loom"),
+    workflow = list(is = "optimus_post_processing_v1.0.0")
+)
+loom_files <- files(standard_loom_file_filter)
+```
+
+Which projects studying the liver have a standard loom file available?
+
+```{r liver-loom-files}
+liver_loom_projects <- left_join(
+    liver_projects, loom_files,
+    by = c("projectId", "projectTitle")
+)
+liver_loom_projects
+```
+
+Choose one project more-or-less arbitrarily, for demonstration purposes
+
+```{r liver-loom-project-1}
+liver_loom_projects |>
+    filter(projectId == "4d6f6c96-2a83-43d8-8fe1-0f53bffd4674") |>
+    glimpse()
+```
+
+Create a filter and download the file
+
+```{r liver-loom-download}
+liver_loom_filter <- filters(
+    projectId = list(is = "4d6f6c96-2a83-43d8-8fe1-0f53bffd4674"),
+    fileSource = list(is = "DCP/2 Analysis"),
+    fileFormat = list(is = "loom"),
+    workflow = list(is = "optimus_post_processing_v1.0.0")
+)
+loom_file_path <-
+    files(liver_loom_filter) |> # find files matching filter
+    files_download()            # download (and cache) to local disk
+```
+
+The file is cached locally, so running `files_download()` a second
+time does not re-download it.
 
 ### Integration with _R_ / _Bioconductor_ work flows
+
+'.loom' files are easily integrated into _R_ / _Bioconductor_
+workflows using the [LoomExperiment][] package.
+
+```{r LoomExperiment}
+suppressPackageStartupMessages({
+    library(LoomExperiment)
+})
+loom <- import(loom_file_path)
+loom
+```
+
+The `metadata()` of the loom file contains useful information on
+provenance.
+
+```{r metadata}
+metadata(loom) |> str()
+```
+
+The .loom files produced by the standard HCA pipeline contain QC
+metrics on the rows (genes) and columns (cells), but no biological
+information about the cells. Remedy this using
+`optimus_loom_annotation()`
+
+```{r optimus_loom_annotation}
+annotated_loom <- optimus_loom_annotation(loom)
+annotated_loom
+
+new_columns <- setdiff(
+    names(colData(annotated_loom)),
+    names(colData(loom))
+)
+length(new_columns)
+```
+
+The following uses names of the annotation columns to show that there
+are 5 donors (4 males and one female) ranging in age from 21
+to 65 years old. There are between 39782 and 87538 cells per donor.
+
+```{r cell-info}
+colData(annotated_loom) |>
+    as_tibble() |>
+    dplyr::count(
+        biomaterial_id = donor_organism.biomaterial_core.biomaterial_id,
+        sex = donor_organism.sex,
+        organism_age = donor_organism.organism_age
+    )
+```
+
+A minimal coercion creates a [SingleCellExperiment][] that can be used
+in standard _R_ / _Bioconductor_ single cell workflows.
+
+```{r sce}
+sce <-
+    annotated_loom |>
+    as("SingleCellExperiment")
+sce
+```
 
 ## Acknowledgements
 
 ```{r}
 sessionInfo()
 ```
-

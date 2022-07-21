@@ -1,5 +1,7 @@
 # ExploringHCACxG
 
+Last modified: 7 July, 2022
+
 This package provides an 'Orchestra' environment for exploring the
 [hca][] and [cellxgenedp][] packages for Human Cell Atlas data
 access. Please see the vignettes for more information.
@@ -40,8 +42,21 @@ leisure.
 | Accessing CellxGene data from  Bioconductor       | 15m  |
 | Bioconductor, AnVIL, and the HCA                  | 15m  |
 
+### Additional resources
+
+Presentations on similar material include
+
+- Accessing Human Cell Atlas Data with _R_ / _Bioconductor_ and the
+  hca package, 2021-10-06 [slides][hca-1]
+
+- _R_ / _Bioconductor_ for Analysis and Comprehension of the Human
+  Cell Atlas, 2022-07-20 [slides][hca-2]
+
 [hca]: https://bioconductor.org/packages/hca
 [cellxgenedp]: https://bioconductor.org/packages/cellxgenedp
 [dplyr]: https://cran.r-project.org/package=dplyr
 [SingleCellExperiment]: https://bioconductor.org/packages/SingleCellExperiment
 [AnVIL computational cloud]: https://anvilproject.org
+
+[hca-1]: https://bit.ly/hca2021bioc
+[hca-2]: https://bit.ly/3aUAbju

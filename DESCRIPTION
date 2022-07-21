@@ -1,7 +1,7 @@
 Package: ExploringHCACxG
 Title: Using R / Bioconductor to explore and download Human Cell Atlas
     and CellXGene data resources
-Version: 0.0.2
+Version: 0.0.3
 Authors@R: 
     c(person(
         given = "Martin",
@@ -27,7 +27,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.2.1
 Depends: 
     hca, cellxgenedp
 Suggests: 

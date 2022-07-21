@@ -1,3 +1,6 @@
 inst/doc
 HOWTO_BUILD_WORKSHOP.Rmd
+.Rhistory
+*_cache
+docs/
 *~

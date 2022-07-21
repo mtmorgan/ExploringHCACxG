@@ -1,12 +1,12 @@
 ---
-title: "2. Accessing CellxGene Data From Bioconductor"
+title: "2. Accessing CellxGene Data"
 author:
     Martin Morgan^[Roswell Park Comprehensive Cancer Center (RPCCC)],
-    Kayla Interdonato^[RPCCC],
-    Yubo Cheng^[RPCCC].
+    Kayla Interdonato^[Roswell Park Comprehensive Cancer Center (RPCCC)],
+    Yubo Cheng^[Roswell Park Comprehensive Cancer Center (RPCCC)].
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{2. Accessing CellxGene Data From Bioconductor}
+  %\VignetteIndexEntry{2. Accessing CellxGene Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,11 +15,10 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  cache = identical(Sys.info()[["nodename"]], "GVLY610WKT")
 )
 ```
-
-Last modified: 20 July, 2022
 
 ## Overview
 
@@ -87,15 +86,19 @@ Some examples:
 
 ## Workshop
 
-### Exploring the CellXGene web sites
+### Exploring the CellxGene web sites
 
-Datasets
+The CellxGene [Data Portal][cxg]
 
-- https://cellxgene.cziscience.com/
+![](images/CXGDP.png)
 
-Interactive visualization
+Interactive visualization of CellxGene data sets
 
-- Easy visualization is pretty cool! 
+![](images/CXGViz.png)
+
+- Easy visualization is pretty cool!
+
+[cxg]: https://cellxgene.cziscience.com/
 
 Some observations
 
@@ -103,11 +106,11 @@ Some observations
 - What workflow was used in processing data? It's up to the
   contributor, and not documented.
 
-### Working with CellXGene data
+### Working with CellxGene data
 
 Load the packages we'll use
 
-```{r}
+```{r setup}
 suppressPackageStartupMessages({
     library(cellxgenedp)
     library(dplyr)
@@ -119,13 +122,13 @@ suppressPackageStartupMessages({
 
 Connect to the database
 
-```{r}
+```{r db}
 db = db()
 ```
 
 Discover datasets with 10x assays of African American females
 
-```{r}
+```{r african-american-female}
 african_american_female <-
     datasets(db) |>
     filter(
@@ -139,7 +142,7 @@ african_american_female
 Find H5AD files for these datasets; visualize and download one for
 illustration
 
-```{r}
+```{r file-selection}
 selected_files <-
     left_join(
         african_american_female |> select(dataset_id),
@@ -151,7 +154,7 @@ selected_files
 
 Visualize 'CXG' files in the CellxGene web browser
 
-```{r, eval = FALSE}
+```{r visualize, eval = FALSE}
 selected_files |>
     filter(filetype == "CXG") |>
     dplyr::slice(1) |>
@@ -160,7 +163,7 @@ selected_files |>
 
 Download 'H5AD' (anndata) files for local use
 
-```{r}
+```{r download}
 h5ad_file <-
     selected_files |>
     filter(filetype == "H5AD") |>
@@ -172,7 +175,7 @@ h5ad_file <-
 
 Read the H5AD file into _R_
 
-```{r}
+```{r read}
 h5ad <- readH5AD(h5ad_file, reader = "R", use_hdf5 = TRUE)
 h5ad
 ```
@@ -182,7 +185,7 @@ h5ad
 Work with the data, e.g., simple visualization to illustrate the
 familiar _R_ / _Bioconductor_ tools 'just work'.
 
-```{r}
+```{r plot}
 umap = as_tibble(reducedDim(h5ad, "X_umap"))
 ggplot(umap) +
     aes(x = V1, y = V2, color = h5ad$cell_type) +
@@ -194,4 +197,3 @@ ggplot(umap) +
 ```{r}
 sessionInfo()
 ```
-
