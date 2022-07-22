@@ -168,22 +168,57 @@ Discover projects
 ## basic information, like HCA data portal
 p <- projects()
 p
-
-## much more information
-pe <- projects(as = "tibble_expanded")
-pe
 ```
 
-Select subsets of projects using filters, e.g., studying
-liver. Possible to specify several filters at once.
+Columns with type `<list>` usually have some projects with 0, 1, 2, or
+more of the corresponding column. This is more clearly displayed when
+the dplyr print method allocates more room per column, or when using
+`glimpse()`, or by pulling the column from the table.
+
+```{r}
+p |>
+    select(specimenOrganPart)
+p |>
+    glimpse()
+p |>
+    head() |>
+    pull(specimenOrganPart)
+```
+
+The table can be expanded so that there is one row for each
+`specimenOrganPart`, rather than for each project; it is usually not
+productive to unnest multiple columns, because this leads to a
+combinatorial number of rows.
+
+```{r}
+p |>
+    tidyr::unnest(specimenOrganPart)
+```
+
+Arguments to `projects()` allow information to be returned in
+different formats, or to return much more information about each
+project. Using `as = "list"` produces a nested data structure with all
+information provided by the HCA Data Portal; exploring this data is
+facilitated by `listveiwer::jsonedit()`, using `as = "lol"` and
+`lol_*` functions in the [hca][] package, or perhaps
+`cellxgenedp::jmespath()`.
+
+```{r tibble-expand}
+## all information, as a list-of-lists
+pl <- projects(as = "list")
+lengths(pl)
+```
+
+An alternative to working with all projects is to apply filters during
+the original query. For instance, to select subsets of projects, e.g.,
+studying liver. It is possible to specify several filters at once, as
+we will see below.
 
 ```{r project-filters}
 liver_filter <- filters(
     specimenOrgan = list(is = "liver")
 )
 liver_projects <- projects(liver_filter)
-liver_projects
-
 liver_projects |>
     select(projectId, projectTitle)
 
@@ -219,11 +254,13 @@ loom_files <- files(standard_loom_file_filter)
 Which projects studying the liver have a standard loom file available?
 
 ```{r liver-loom-files}
-liver_loom_projects <- left_join(
+## inner_join -- projectId & projectTitles in both tibbles
+liver_loom_projects <- inner_join(
     liver_projects, loom_files,
     by = c("projectId", "projectTitle")
 )
-liver_loom_projects
+liver_loom_projects |>
+    select(projectId, fileId, projectTitle, fileSize = size)
 ```
 
 Choose one project more-or-less arbitrarily, for demonstration purposes
