@@ -22,15 +22,6 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-### Description
-
-FIXME: Along with the topic of your workshop, include how students can expect
-to spend their time. For the description may also include information
-about what type of workshop it is (e.g. instructor-led live demo, lab,
-lecture + lab, etc.). Instructors are strongly recommended to provide
-completely worked examples for lab sessions, and a set of stand-alone
-notes that can be read and understood outside of the workshop.
-
 ### _R_ / _Bioconductor_ packages used
 
 The focus is on the [hca][] package. This package emphasize [dplyr][]
@@ -48,40 +39,11 @@ Bioconductor as [SingleCellExperiment][] objects through the
 
 ### Time outline
 
-| Activity                            | Time |
-|-------------------------------------|------|
-| Introduction to the HCA data portal |  5m  |
-| HCA discovery in R / Bioconductor   | 10m  |
-
-### Workshop goals and objectives
-
-List "big picture" student-centered workshop goals and learning
-objectives. Learning goals and objectives are related, but not the
-same thing. These goals and objectives will help some people to decide
-whether to attend the conference for training purposes, so please make
-these as precise and accurate as possible.
-
-*Learning goals* are high-level descriptions of what
-participants will learn and be able to do after the workshop is
-over. *Learning objectives*, on the other hand, describe in very
-specific and measurable terms specific skills or knowledge
-attained. The [Bloom's Taxonomy](#bloom) may be a useful framework
-for defining and describing your goals and objectives, although there
-are others.
-
-### Learning goals
-
-Some examples:
-
-* describe how to...
-* identify methods for...
-* understand the difference between...
-
-### Learning objectives
-
-* analyze xyz data to produce...
-* create xyz plots
-* evaluate xyz data for artifacts
+| Activity                                           | Time |
+|----------------------------------------------------|------|
+| Refresh: scRNAseq in Bioconductor; 'tidy' analysis | 5m   |
+| Introduction to the HCA data portal                | 5m   |
+| HCA discovery in R / Bioconductor                  | 10m  |
 
 ## Workshop
 
@@ -184,6 +146,9 @@ p |>
     head() |>
     pull(specimenOrganPart)
 ```
+
+Using `hca_view(p)` displays the data in a graphical widget that
+allows selection of one or several projects.
 
 The table can be expanded so that there is one row for each
 `specimenOrganPart`, rather than for each project; it is usually not

@@ -21,15 +21,6 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-### Description
-
-FIXME: Along with the topic of your workshop, include how students can expect
-to spend their time. For the description may also include information
-about what type of workshop it is (e.g. instructor-led live demo, lab,
-lecture + lab, etc.). Instructors are strongly recommended to provide
-completely worked examples for lab sessions, and a set of stand-alone
-notes that can be read and understood outside of the workshop.
-
 ### _R_ / _Bioconductor_ packages used
 
 The focus of this vignette is use of data in the [AnVIL computational
@@ -50,39 +41,9 @@ facilitate efficient use of this resource.
 
 | Activity                                        | Time |
 |-------------------------------------------------|------|
-| Introduction to the AnVIL project               |  5m  |
-| AnVIL and the HCA                               |  5m  |
-| AnVIL and Bioconductor -- the [AnVIL][] package |  5m  |
-
-### Workshop goals and objectives
-
-List "big picture" student-centered workshop goals and learning
-objectives. Learning goals and objectives are related, but not the
-same thing. These goals and objectives will help some people to decide
-whether to attend the conference for training purposes, so please make
-these as precise and accurate as possible.
-
-*Learning goals* are high-level descriptions of what
-participants will learn and be able to do after the workshop is
-over. *Learning objectives*, on the other hand, describe in very
-specific and measurable terms specific skills or knowledge
-attained. The [Bloom's Taxonomy](#bloom) may be a useful framework
-for defining and describing your goals and objectives, although there
-are others.
-
-### Learning goals
-
-Some examples:
-
-* describe how to...
-* identify methods for...
-* understand the difference between...
-
-### Learning objectives
-
-* analyze xyz data to produce...
-* create xyz plots
-* evaluate xyz data for artifacts
+| Introduction to the AnVIL project               |  2m  |
+| AnVIL and the HCA                               |  2m  |
+| AnVIL and Bioconductor -- the [AnVIL][] package |  3m  |
 
 ## Workshop
 
