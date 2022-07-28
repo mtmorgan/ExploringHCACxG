@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">ExploringHCACxG</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.4</span>
       </span>
     </div>
 
@@ -97,17 +97,6 @@ McDaniel, Yubo Cheng<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup>
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <div class="section level3">
-<h3 id="description">Description<a class="anchor" aria-label="anchor" href="#description"></a>
-</h3>
-<p>FIXME: Along with the topic of your workshop, include how students
-can expect to spend their time. For the description may also include
-information about what type of workshop it is (e.g. instructor-led live
-demo, lab, lecture + lab, etc.). Instructors are strongly recommended to
-provide completely worked examples for lab sessions, and a set of
-stand-alone notes that can be read and understood outside of the
-workshop.</p>
-</div>
-<div class="section level3">
 <h3 id="r-bioconductor-packages-used">
 <em>R</em> / <em>Bioconductor</em> packages used<a class="anchor" aria-label="anchor" href="#r-bioconductor-packages-used"></a>
 </h3>
@@ -129,50 +118,19 @@ packages.</p>
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>Introduction to the HCA data portal</td>
+<td>Refresh: scRNAseq in Bioconductor; ‘tidy’ analysis</td>
 <td>5m</td>
 </tr>
 <tr class="even">
+<td>Introduction to the HCA data portal</td>
+<td>5m</td>
+</tr>
+<tr class="odd">
 <td>HCA discovery in R / Bioconductor</td>
 <td>10m</td>
 </tr>
 </tbody>
 </table>
-</div>
-<div class="section level3">
-<h3 id="workshop-goals-and-objectives">Workshop goals and objectives<a class="anchor" aria-label="anchor" href="#workshop-goals-and-objectives"></a>
-</h3>
-<p>List “big picture” student-centered workshop goals and learning
-objectives. Learning goals and objectives are related, but not the same
-thing. These goals and objectives will help some people to decide
-whether to attend the conference for training purposes, so please make
-these as precise and accurate as possible.</p>
-<p><em>Learning goals</em> are high-level descriptions of what
-participants will learn and be able to do after the workshop is over.
-<em>Learning objectives</em>, on the other hand, describe in very
-specific and measurable terms specific skills or knowledge attained. The
-<a href="#bloom">Bloom’s Taxonomy</a> may be a useful framework for
-defining and describing your goals and objectives, although there are
-others.</p>
-</div>
-<div class="section level3">
-<h3 id="learning-goals">Learning goals<a class="anchor" aria-label="anchor" href="#learning-goals"></a>
-</h3>
-<p>Some examples:</p>
-<ul>
-<li>describe how to…</li>
-<li>identify methods for…</li>
-<li>understand the difference between…</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="learning-objectives">Learning objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a>
-</h3>
-<ul>
-<li>analyze xyz data to produce…</li>
-<li>create xyz plots</li>
-<li>evaluate xyz data for artifacts</li>
-</ul>
 </div>
 </div>
 <div class="section level2">
@@ -297,7 +255,7 @@ workflows</li>
 <code class="sourceCode R"><span><span class="co">## basic information, like HCA data portal</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/hca/man/projects.html" class="external-link">projects</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">p</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 261 × 14</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 267 × 14</span></span></span>
 <span><span class="co">#&gt;    projectId     proje…¹ genus…² sampl…³ speci…⁴ speci…⁵ selec…⁶ libra…⁷ nucle…⁸</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 74b6d569-3b1… 1.3 Mi… &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  </span></span>
@@ -310,7 +268,7 @@ workflows</li>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 602628d7-c03… A Sing… &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> c1810dbc-16d… A cell… &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> c0518445-3b3… A cell… &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 251 more rows, 5 more variables: pairedEnd &lt;list&gt;, workflow &lt;list&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 257 more rows, 5 more variables: pairedEnd &lt;list&gt;, workflow &lt;list&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   specimenDisease &lt;list&gt;, donorDisease &lt;list&gt;, developmentStage &lt;list&gt;, and</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   abbreviated variable names ¹​projectTitle, ²​genusSpecies, ³​sampleEntityType,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​specimenOrgan, ⁵​specimenOrganPart, ⁶​selectedCellType,</span></span></span>
@@ -324,7 +282,7 @@ from the table.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">specimenOrganPart</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 261 × 1</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 267 × 1</span></span></span>
 <span><span class="co">#&gt;    specimenOrganPart</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>           </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">&lt;chr [1]&gt;</span>        </span></span>
@@ -337,11 +295,11 @@ from the table.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">&lt;chr [3]&gt;</span>        </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">&lt;chr [0]&gt;</span>        </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">&lt;chr [6]&gt;</span>        </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 251 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 257 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span>
 <span><span class="va">p</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Rows: 261</span></span>
+<span><span class="co">#&gt; Rows: 267</span></span>
 <span><span class="co">#&gt; Columns: 14</span></span>
 <span><span class="co">#&gt; $ projectId                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "74b6d569-3b11-42ef-b6b1-a0454522b4a0", "5…</span></span>
 <span><span class="co">#&gt; $ projectTitle                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> "1.3 Million Brain Cells from E18 Mice", "…</span></span>
@@ -378,6 +336,8 @@ from the table.</p>
 <span><span class="co">#&gt; [[6]]</span></span>
 <span><span class="co">#&gt; [1] "epithelium of bronchus"       "epithelium of trachea"       </span></span>
 <span><span class="co">#&gt; [3] "inferior nasal concha"        "terminal bronchus epithelium"</span></span></code></pre></div>
+<p>Using <code>hca_view(p)</code> displays the data in a graphical
+widget that allows selection of one or several projects.</p>
 <p>The table can be expanded so that there is one row for each
 <code>specimenOrganPart</code>, rather than for each project; it is
 usually not productive to unnest multiple columns, because this leads to
@@ -385,7 +345,7 @@ a combinatorial number of rows.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/nest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="va">specimenOrganPart</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 415 × 14</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 424 × 14</span></span></span>
 <span><span class="co">#&gt;    projectId     proje…¹ genus…² sampl…³ speci…⁴ speci…⁵ selec…⁶ libra…⁷ nucle…⁸</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;list&gt;</span> </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 74b6d569-3b1… 1.3 Mi… &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   cortex  &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  </span></span>
@@ -398,7 +358,7 @@ a combinatorial number of rows.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> ef1e3497-515… A Sing… &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   termin… &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 602628d7-c03… A Sing… &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   annulu… &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 602628d7-c03… A Sing… &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   nucleu… &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  </span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 405 more rows, 5 more variables: pairedEnd &lt;list&gt;, workflow &lt;list&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 414 more rows, 5 more variables: pairedEnd &lt;list&gt;, workflow &lt;list&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   specimenDisease &lt;list&gt;, donorDisease &lt;list&gt;, developmentStage &lt;list&gt;, and</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   abbreviated variable names ¹​projectTitle, ²​genusSpecies, ³​sampleEntityType,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   ⁴​specimenOrgan, ⁵​specimenOrganPart, ⁶​selectedCellType,</span></span></span>
@@ -416,7 +376,7 @@ data is facilitated by <code>listveiwer::jsonedit()</code>, using
 <span><span class="va">pl</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/hca/man/projects.html" class="external-link">projects</a></span><span class="op">(</span>as <span class="op">=</span> <span class="st">"list"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lengths.html" class="external-link">lengths</a></span><span class="op">(</span><span class="va">pl</span><span class="op">)</span></span>
 <span><span class="co">#&gt; pagination termFacets       hits </span></span>
-<span><span class="co">#&gt;          8         36        261</span></span></code></pre></div>
+<span><span class="co">#&gt;          8         36        267</span></span></code></pre></div>
 <p>An alternative to working with all projects is to apply filters
 during the original query. For instance, to select subsets of projects,
 e.g., studying liver. It is possible to specify several filters at once,
@@ -428,7 +388,7 @@ as we will see below.</p>
 <span><span class="va">liver_projects</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/hca/man/projects.html" class="external-link">projects</a></span><span class="op">(</span><span class="va">liver_filter</span><span class="op">)</span></span>
 <span><span class="va">liver_projects</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">projectId</span>, <span class="va">projectTitle</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 21 × 2</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 23 × 2</span></span></span>
 <span><span class="co">#&gt;    projectId                            projectTitle                            </span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 94e4ee09-9b4b-410a-84dc-a751ad36d0df A Human Liver Cell Atlas reveals Hetero…</span></span>
@@ -441,7 +401,7 @@ as we will see below.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> f2fe82f0-4454-4d84-b416-a885f3121e59 Decoding human fetal liver haematopoies…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> ccef38d7-aa92-4010-9621-c4c7b1182647 Dissecting the clonal nature of allelic…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 4d6f6c96-2a83-43d8-8fe1-0f53bffd4674 Dissecting the human liver cellular lan…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 11 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># … with 13 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span>
 <span></span>
 <span><span class="co">## facet options available for filtering: facet_options()</span></span></code></pre></div>
@@ -690,7 +650,7 @@ cell workflows.</p>
 <span><span class="co">#&gt;  [7] GenomicRanges_1.49.0        GenomeInfoDb_1.33.3        </span></span>
 <span><span class="co">#&gt;  [9] IRanges_2.31.0              MatrixGenerics_1.9.1       </span></span>
 <span><span class="co">#&gt; [11] matrixStats_0.62.0          S4Vectors_0.35.1           </span></span>
-<span><span class="co">#&gt; [13] BiocGenerics_0.43.0         hca_1.5.5                  </span></span>
+<span><span class="co">#&gt; [13] BiocGenerics_0.43.1         hca_1.5.6                  </span></span>
 <span><span class="co">#&gt; [15] dplyr_1.0.9                </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
@@ -700,29 +660,28 @@ cell workflows.</p>
 <span><span class="co">#&gt; [10] R6_2.5.1               DT_0.23                HDF5Array_1.25.1      </span></span>
 <span><span class="co">#&gt; [13] DBI_1.1.3              rhdf5filters_1.9.0     tidyselect_1.1.2      </span></span>
 <span><span class="co">#&gt; [16] bit_4.0.4              curl_4.3.2             compiler_4.2.0        </span></span>
-<span><span class="co">#&gt; [19] textshaping_0.3.6      cli_3.3.0              formatR_1.12          </span></span>
-<span><span class="co">#&gt; [22] desc_1.4.1             DelayedArray_0.23.0    sass_0.4.2            </span></span>
-<span><span class="co">#&gt; [25] readr_2.1.2            rappdirs_0.3.3         pkgdown_2.0.6         </span></span>
-<span><span class="co">#&gt; [28] systemfonts_1.0.4      stringr_1.4.0          digest_0.6.29         </span></span>
-<span><span class="co">#&gt; [31] rmarkdown_2.14         XVector_0.37.0         pkgconfig_2.0.3       </span></span>
-<span><span class="co">#&gt; [34] htmltools_0.5.3        dbplyr_2.2.1           fastmap_1.1.0         </span></span>
-<span><span class="co">#&gt; [37] htmlwidgets_1.5.4      rlang_1.0.4            RSQLite_2.2.15        </span></span>
-<span><span class="co">#&gt; [40] shiny_1.7.2            jquerylib_0.1.4        generics_0.1.3        </span></span>
-<span><span class="co">#&gt; [43] jsonlite_1.8.0         vroom_1.5.7            RCurl_1.98-1.7        </span></span>
-<span><span class="co">#&gt; [46] magrittr_2.0.3         GenomeInfoDbData_1.2.8 futile.logger_1.4.3   </span></span>
-<span><span class="co">#&gt; [49] Matrix_1.4-1           Rcpp_1.0.9             Rhdf5lib_1.19.2       </span></span>
-<span><span class="co">#&gt; [52] fansi_1.0.3            lifecycle_1.0.1        stringi_1.7.8         </span></span>
-<span><span class="co">#&gt; [55] yaml_2.3.5             zlibbioc_1.43.0        BiocFileCache_2.5.0   </span></span>
-<span><span class="co">#&gt; [58] grid_4.2.0             blob_1.2.3             parallel_4.2.0        </span></span>
-<span><span class="co">#&gt; [61] promises_1.2.0.1       crayon_1.5.1           miniUI_0.1.1.1        </span></span>
-<span><span class="co">#&gt; [64] lattice_0.20-45        hms_1.1.1              knitr_1.39            </span></span>
-<span><span class="co">#&gt; [67] pillar_1.8.0           futile.options_1.0.1   glue_1.6.2            </span></span>
-<span><span class="co">#&gt; [70] evaluate_0.15          lambda.r_1.2.4         vctrs_0.4.1           </span></span>
-<span><span class="co">#&gt; [73] tzdb_0.3.0             httpuv_1.6.5           purrr_0.3.4           </span></span>
-<span><span class="co">#&gt; [76] tidyr_1.2.0            assertthat_0.2.1       cachem_1.0.6          </span></span>
-<span><span class="co">#&gt; [79] xfun_0.31              mime_0.12              xtable_1.8-4          </span></span>
-<span><span class="co">#&gt; [82] later_1.3.0            ragg_1.2.2             tibble_3.1.7          </span></span>
-<span><span class="co">#&gt; [85] memoise_2.0.1          ellipsis_0.3.2</span></span></code></pre></div>
+<span><span class="co">#&gt; [19] textshaping_0.3.6      cli_3.3.0              desc_1.4.1            </span></span>
+<span><span class="co">#&gt; [22] DelayedArray_0.23.0    sass_0.4.2             readr_2.1.2           </span></span>
+<span><span class="co">#&gt; [25] rappdirs_0.3.3         pkgdown_2.0.6          systemfonts_1.0.4     </span></span>
+<span><span class="co">#&gt; [28] stringr_1.4.0          digest_0.6.29          rmarkdown_2.14        </span></span>
+<span><span class="co">#&gt; [31] XVector_0.37.0         pkgconfig_2.0.3        htmltools_0.5.3       </span></span>
+<span><span class="co">#&gt; [34] dbplyr_2.2.1           fastmap_1.1.0          htmlwidgets_1.5.4     </span></span>
+<span><span class="co">#&gt; [37] rlang_1.0.4            RSQLite_2.2.15         shiny_1.7.2           </span></span>
+<span><span class="co">#&gt; [40] jquerylib_0.1.4        generics_0.1.3         jsonlite_1.8.0        </span></span>
+<span><span class="co">#&gt; [43] vroom_1.5.7            RCurl_1.98-1.7         magrittr_2.0.3        </span></span>
+<span><span class="co">#&gt; [46] GenomeInfoDbData_1.2.8 Matrix_1.4-1           Rcpp_1.0.9            </span></span>
+<span><span class="co">#&gt; [49] Rhdf5lib_1.19.2        fansi_1.0.3            lifecycle_1.0.1       </span></span>
+<span><span class="co">#&gt; [52] stringi_1.7.8          yaml_2.3.5             zlibbioc_1.43.0       </span></span>
+<span><span class="co">#&gt; [55] BiocFileCache_2.5.0    grid_4.2.0             blob_1.2.3            </span></span>
+<span><span class="co">#&gt; [58] parallel_4.2.0         promises_1.2.0.1       crayon_1.5.1          </span></span>
+<span><span class="co">#&gt; [61] miniUI_0.1.1.1         lattice_0.20-45        hms_1.1.1             </span></span>
+<span><span class="co">#&gt; [64] knitr_1.39             pillar_1.8.0           glue_1.6.2            </span></span>
+<span><span class="co">#&gt; [67] evaluate_0.15          vctrs_0.4.1            tzdb_0.3.0            </span></span>
+<span><span class="co">#&gt; [70] httpuv_1.6.5           purrr_0.3.4            tidyr_1.2.0           </span></span>
+<span><span class="co">#&gt; [73] assertthat_0.2.1       cachem_1.0.6           xfun_0.31             </span></span>
+<span><span class="co">#&gt; [76] mime_0.12              xtable_1.8-4           later_1.3.0           </span></span>
+<span><span class="co">#&gt; [79] ragg_1.2.2             tibble_3.1.7           memoise_2.0.1         </span></span>
+<span><span class="co">#&gt; [82] ellipsis_0.3.2</span></span></code></pre></div>
 </div>
 <div class="footnotes footnotes-end-of-document">
 <hr>

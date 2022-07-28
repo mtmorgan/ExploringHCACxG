@@ -41,7 +41,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">ExploringHCACxG</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.4</span>
       </span>
     </div>
 
@@ -94,6 +94,11 @@
 <p>Last modified: 7 July, 2022</p>
 <p>This package provides an ‘Orchestra’ environment for exploring the <a href="https://bioconductor.org/packages/hca" class="external-link">hca</a> and <a href="https://bioconductor.org/packages/cellxgenedp" class="external-link">cellxgenedp</a> packages for Human Cell Atlas data access. Please see the vignettes for more information.</p>
 <div class="section level3">
+<h3 id="abstract">Abstract<a class="anchor" aria-label="anchor" href="#abstract"></a>
+</h3>
+<p>This short workshop demonstrates how three R/Bioconductor packages provide access to the increasing number of single cell gene expression data sets produced as part of the Human Cell Atlas. The cellxgenedp package (<a href="https://bioconductor.org/packages/cellxgenedp" class="external-link uri">https://bioconductor.org/packages/cellxgenedp</a>) allows discovery, download for import into R / Bioconductor as SingleCellExperiment objects, and visual exploration through the cellxgene data portal of more than 300 consistently-processed datasets. The hca package (<a href="https://bioconductor.org/packages/hca" class="external-link uri">https://bioconductor.org/packages/hca</a>) provides additional, fine-grained, access to 208 projects, including 50 that have been processed by standard Human Cell Atlas workflows defined in WDL (Workflow Description Language). Description of the processing workflow in WDL means that other datasets, including those produced by individual labs, can be consistently processed from fastq or bam files to objects that are easily integrated into R / Bioconductor work flows. This process is particularly easy when performed in the AnVIL computational cloud, a process facilitated by the AnVIL (<a href="https://bioconductor.org/packages/AnVIL" class="external-link uri">https://bioconductor.org/packages/AnVIL</a>) package.</p>
+</div>
+<div class="section level3">
 <h3 id="prerequisites">Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"></a>
 </h3>
 <p>This workshop assumes familiarity with single-cell RNAseq experiments, especially the ‘count matrix’ summary of gene x cell expression values.</p>
@@ -117,7 +122,7 @@
 <tbody>
 <tr class="odd">
 <td>Accessing Human Cell Atlas data from Bioconductor</td>
-<td>15m</td>
+<td>20m</td>
 </tr>
 <tr class="even">
 <td>Accessing CellxGene data from Bioconductor</td>
@@ -125,18 +130,38 @@
 </tr>
 <tr class="odd">
 <td>Bioconductor, AnVIL, and the HCA</td>
-<td>15m</td>
+<td>7m</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section level3">
+<h3 id="learning-goals">Learning goals<a class="anchor" aria-label="anchor" href="#learning-goals"></a>
+</h3>
+<ul>
+<li>Explore Human Cell Atlas (HCA) data sets available through the <a href="https://bioconductor.org/packages/hca" class="external-link">hca</a> and <a href="https://bioconductor.org/packages/cellxgenedp" class="external-link">cellxgenedp</a> packages.</li>
+<li>Launch AnVIL project workspaces for processing HCA data.</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="learning-objectives">Learning objectives<a class="anchor" aria-label="anchor" href="#learning-objectives"></a>
+</h3>
+<ul>
+<li>Download specific HCA and cellxgene data sets.</li>
+<li>Import loom or h5ad format files into <em>R</em> / <em>Bioconductor</em>.</li>
+<li>Perform initial steps, e.g., visualization, of scRNAseq data, in preparation for more extensive analysis using <a href="https://bioconductor.org/books/OSCA" class="external-link">OSCA</a>.</li>
+</ul>
 </div>
 <div class="section level3">
 <h3 id="additional-resources">Additional resources<a class="anchor" aria-label="anchor" href="#additional-resources"></a>
 </h3>
 <p>Presentations on similar material include</p>
 <ul>
-<li><p>Accessing Human Cell Atlas Data with <em>R</em> / <em>Bioconductor</em> and the hca package, 2021-10-06 <a href="https://bit.ly/hca2021bioc" class="external-link">slides</a></p></li>
-<li><p><em>R</em> / <em>Bioconductor</em> for Analysis and Comprehension of the Human Cell Atlas, 2022-07-20 <a href="https://bit.ly/3aUAbju" class="external-link">slides</a></p></li>
+<li>Accessing Human Cell Atlas Data with <em>R</em> / <em>Bioconductor</em> and the hca package, 2021-10-06 <a href="https://bit.ly/hca2021bioc" class="external-link">slides</a>
+</li>
+<li>
+<em>R</em> / <em>Bioconductor</em> for Analysis and Comprehension of the Human Cell Atlas, 2022-07-20 <a href="https://bit.ly/3aUAbju" class="external-link">slides</a>
+</li>
 </ul>
 </div>
 </div>
